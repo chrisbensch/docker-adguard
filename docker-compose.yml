@@ -1,0 +1,10 @@
+services:
+  adguardhome:  # Define the service named 'adguardhome'
+    image: adguard/adguardhome:latest  # Use the 'adguard/adguardhome' Docker image
+    container_name: adguardhome
+    hostname: bl-dns-01
+    restart: unless-stopped  # Restart the container automatically unless stopped manually
+    network_mode: host
+    volumes:  # Mount host directories as volumes inside the container
+      - ./appdata/adguard/work:/opt/adguardhome/work  # Mount '/my/own/workdir' to '/opt/adguardhome/work'
+      - ./appdata/adguard/confdir:/opt/adguardhome/conf  # Mount '/my/own/confdir' to '/opt/adguardhome/conf'
